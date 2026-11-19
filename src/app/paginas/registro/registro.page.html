@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/bienvenida"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1>Empieza a compartir estilo</h1>
+  <ion-input label="Nombre" labelPlacement="floating"></ion-input>
+  <ion-input label="Email" labelPlacement="floating" type="email"></ion-input>
+  <ion-input label="Contraseña" labelPlacement="floating" type="password"></ion-input>
+  <ion-input label="Confirmar contraseña" labelPlacement="floating" type="password"></ion-input>
+  <ion-button expand="block" routerLink="/app/explorar" routerDirection="root">Crear cuenta</ion-button>
+  <p>¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></p>
+</ion-content>

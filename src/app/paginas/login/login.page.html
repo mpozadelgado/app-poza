@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/bienvenida"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Iniciar sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1>Qué alegría verte de nuevo</h1>
+  <ion-input label="Email" labelPlacement="floating" type="email"></ion-input>
+  <ion-input label="Contraseña" labelPlacement="floating" type="password"></ion-input>
+  <ion-button expand="block" routerLink="/app/explorar" routerDirection="root">Iniciar sesión</ion-button>
+  <p>¿Aún no tienes cuenta? <a routerLink="/registro">Regístrate</a></p>
+</ion-content>

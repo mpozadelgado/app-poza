@@ -3,8 +3,20 @@ import type { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'app',
+    redirectTo: 'bienvenida',
     pathMatch: 'full',
+  },
+  {
+    path: 'bienvenida',
+    loadComponent: () => import('./paginas/bienvenida/bienvenida.page').then((m) => m.BienvenidaPage),
+  },
+  {
+    path: 'login',
+    loadComponent: () => import('./paginas/login/login.page').then((m) => m.LoginPage),
+  },
+  {
+    path: 'registro',
+    loadComponent: () => import('./paginas/registro/registro.page').then((m) => m.RegistroPage),
   },
   {
     path: 'app',
@@ -36,5 +48,9 @@ export const routes: Routes = [
         pathMatch: 'full',
       },
     ],
+  },
+  {
+    path: 'registro',
+    loadComponent: () => import('./paginas/registro/registro.page').then((m) => m.RegistroPage),
   },
 ];
