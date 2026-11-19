@@ -27,6 +27,10 @@ export const routes: Routes = [
         loadComponent: () => import('./paginas/explorar/explorar.page').then((m) => m.ExplorarPage),
       },
       {
+        path: 'explorar/:id',
+        loadComponent: () => import('./paginas/prenda-detalle/prenda-detalle.page').then((m) => m.PrendaDetallePage),
+      },
+      {
         path: 'guardado',
         loadComponent: () => import('./paginas/guardado/guardado.page').then((m) => m.GuardadoPage),
       },
@@ -39,6 +43,10 @@ export const routes: Routes = [
         loadComponent: () => import('./paginas/chat/chat.page').then((m) => m.ChatPage),
       },
       {
+        path: 'chat/:id',
+        loadComponent: () => import('./paginas/conversacion/conversacion.page').then((m) => m.ConversacionPage),
+      },
+      {
         path: 'perfil',
         loadComponent: () => import('./paginas/perfil/perfil.page').then((m) => m.PerfilPage),
       },
@@ -48,9 +56,5 @@ export const routes: Routes = [
         pathMatch: 'full',
       },
     ],
-  },
-  {
-    path: 'registro',
-    loadComponent: () => import('./paginas/registro/registro.page').then((m) => m.RegistroPage),
   },
 ];
