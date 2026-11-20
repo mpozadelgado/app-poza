@@ -53,3 +53,34 @@ ion-toolbar {
   --background: var(--ion-background-color);
   --border-width: 0;
 }
+
+ion-button {
+  --border-radius: 14px;
+  text-transform: none;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+ion-button[expand="block"] {
+  min-height: 52px;
+  font-size: 16px;
+}
+
+ion-card {
+  --background: var(--app-superficie);
+  border-radius: var(--app-radio);
+  box-shadow: var(--app-sombra);
+  margin: 0;
+}
+
+ion-searchbar {
+  --background: var(--app-superficie);
+  --border-radius: 14px;
+  --box-shadow: none;
+  --placeholder-color: var(--ion-color-medium);
+}
+
+ion-list.list-inset {
+  border-radius: var(--app-radio);
+  box-shadow: 0 0 0 1px var(--app-borde);
+}
