@@ -33,7 +33,7 @@ import {
   ],
 })
 export class PerfilPage {
-  cambiarTema(evento: ToggleCustomEvent) {
+  cambiarTema(evento: ToggleCustomEvent): void {
     document.documentElement.classList.toggle('ion-palette-dark', evento.detail.checked);
   }
 }
