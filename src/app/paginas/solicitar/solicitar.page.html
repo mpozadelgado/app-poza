@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/explorar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear solicitud</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p>Vas a solicitar la prenda con id = {{ id() }}</p>
+  <ion-button expand="block" routerLink="/solicitud-enviada">Enviar solicitud</ion-button>
+</ion-content>

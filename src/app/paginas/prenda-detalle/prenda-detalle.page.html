@@ -9,4 +9,6 @@
 
 <ion-content class="ion-padding">
   <p>Estás viendo la prenda con id = {{ id() }}</p>
+  <ion-button expand="block" fill="clear" routerLink="/app/explorar/usuario/1">Ver perfil</ion-button>
+  <ion-button expand="block" [routerLink]="['/solicitar', id()]">Solicitar intercambio o préstamo</ion-button>
 </ion-content>

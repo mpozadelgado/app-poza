@@ -19,12 +19,33 @@ export const routes: Routes = [
     loadComponent: () => import('./paginas/registro/registro.page').then((m) => m.RegistroPage),
   },
   {
+    path: 'solicitar/:id',
+    loadComponent: () => import('./paginas/solicitar/solicitar.page').then((m) => m.SolicitarPage),
+  },
+  {
+    path: 'solicitud-enviada',
+    loadComponent: () =>
+      import('./paginas/solicitud-enviada/solicitud-enviada.page').then((m) => m.SolicitudEnviadaPage),
+  },
+  {
+    path: 'valorar/:id',
+    loadComponent: () => import('./paginas/valorar/valorar.page').then((m) => m.ValorarPage),
+  },
+  {
+    path: 'notificaciones',
+    loadComponent: () => import('./paginas/notificaciones/notificaciones.page').then((m) => m.NotificacionesPage),
+  },
+  {
     path: 'app',
     loadComponent: () => import('./paginas/tabs/tabs.page').then((m) => m.TabsPage),
     children: [
       {
         path: 'explorar',
         loadComponent: () => import('./paginas/explorar/explorar.page').then((m) => m.ExplorarPage),
+      },
+      {
+        path: 'explorar/usuario/:id',
+        loadComponent: () => import('./paginas/usuario/usuario.page').then((m) => m.UsuarioPage),
       },
       {
         path: 'explorar/:id',
@@ -56,5 +77,9 @@ export const routes: Routes = [
         pathMatch: 'full',
       },
     ],
+  },
+  {
+    path: '**',
+    loadComponent: () => import('./paginas/no-encontrada/no-encontrada.page').then((m) => m.NoEncontradaPage),
   },
 ];
