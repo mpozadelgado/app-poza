@@ -1,3 +1,10 @@
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/inter-tight/400.css';
+@import '@fontsource/inter-tight/500.css';
+
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------
@@ -34,4 +41,15 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+@import '@ionic/angular/css/palettes/dark.class.css';
+
+h1, h2, h3, ion-title {
+  font-family: var(--app-fuente-titulos);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+ion-toolbar {
+  --background: var(--ion-background-color);
+  --border-width: 0;
+}
