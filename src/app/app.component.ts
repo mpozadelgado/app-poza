@@ -10,6 +10,7 @@ import {
   personOutline,
   notificationsOutline,
   closeOutline,
+  moonOutline,
 } from 'ionicons/icons';
 
 @Component({
@@ -28,6 +29,7 @@ export class AppComponent {
       personOutline,
       notificationsOutline,
       closeOutline,
+      moonOutline,
     });
   }
 }
