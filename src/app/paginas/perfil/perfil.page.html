@@ -69,5 +69,11 @@
     <ion-button color="danger" fill="outline" expand="block" routerLink="/bienvenida" routerDirection="root">Cerrar sesión</ion-button>
   </div>
 
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button routerLink="/app/publicar" aria-label="Publicar prenda">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
   <ion-toast [isOpen]="aviso !== ''" [message]="aviso" [duration]="2000" (didDismiss)="aviso = ''"></ion-toast>
 </ion-content>

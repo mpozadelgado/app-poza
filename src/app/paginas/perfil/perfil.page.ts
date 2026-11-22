@@ -16,6 +16,8 @@ import {
   IonIcon,
   IonToggle,
   IonToast,
+  IonFab,
+  IonFabButton,
   IonRouterLink,
   type ToggleCustomEvent,
 } from '@ionic/angular';
@@ -47,6 +49,8 @@ import type { Prenda } from '../../modelos/prenda';
     IonIcon,
     IonToggle,
     IonToast,
+    IonFab,
+    IonFabButton,
     CabeceraPerfilComponent,
     EstrellasComponent,
   ],
