@@ -1,19 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonList,
-  IonItem,
-  IonThumbnail,
-  IonLabel,
-  IonButtons,
-  IonButton,
-  IonIcon,
-} from '@ionic/angular';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonButton, IonIcon } from '@ionic/angular';
 
+import { TarjetaPrendaComponent } from '../../componentes/tarjeta-prenda/tarjeta-prenda.component';
 import { PRENDAS } from '../../datos/prendas';
 
 @Component({
@@ -25,14 +14,11 @@ import { PRENDAS } from '../../datos/prendas';
     IonToolbar,
     IonTitle,
     IonContent,
-    IonList,
-    IonItem,
-    IonThumbnail,
-    IonLabel,
     IonButtons,
     IonButton,
     IonIcon,
     RouterLink,
+    TarjetaPrendaComponent,
   ],
 })
 export class ExplorarPage {

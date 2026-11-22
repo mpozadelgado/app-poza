@@ -1,0 +1,12 @@
+<ion-card [routerLink]="['/app/explorar', prenda().id]" [button]="true">
+  <div class="foto">
+    <img [src]="prenda().foto" [alt]="prenda().titulo" loading="lazy" />
+  </div>
+  <div class="cuerpo">
+    <h3>{{ prenda().titulo }}</h3>
+    <div class="pie">
+      <span class="talla">Talla {{ prenda().talla }}</span>
+      <app-estado-prenda [estado]="prenda().estado"></app-estado-prenda>
+    </div>
+  </div>
+</ion-card>

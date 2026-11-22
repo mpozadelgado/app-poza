@@ -10,17 +10,9 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <div class="rejilla">
     @for (prenda of prendas; track prenda.id) {
-      <ion-item [routerLink]="['/app/explorar', prenda.id]" [button]="true">
-        <ion-thumbnail slot="start">
-          <img [src]="prenda.foto" [alt]="prenda.titulo" />
-        </ion-thumbnail>
-        <ion-label>
-          <h2>{{ prenda.titulo }}</h2>
-          <p>Talla {{ prenda.talla }} · {{ prenda.estado }}</p>
-        </ion-label>
-      </ion-item>
+      <app-tarjeta-prenda [prenda]="prenda"></app-tarjeta-prenda>
     }
-  </ion-list>
+  </div>
 </ion-content>
