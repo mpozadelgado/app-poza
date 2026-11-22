@@ -14,6 +14,7 @@ import {
   moonOutline,
   searchOutline,
   shirtOutline,
+  heart,
 } from 'ionicons/icons';
 
 @Component({
@@ -36,6 +37,7 @@ export class AppComponent {
       moonOutline,
       searchOutline,
       shirtOutline,
+      heart,
     });
   }
 }

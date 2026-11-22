@@ -7,6 +7,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <p>Estás viendo el perfil del usuario con id = {{ id() }}</p>
+<ion-content>
+  @if (perfil(); as u) {
+    <app-cabecera-perfil [perfil]="u" [prendas]="prendas().length"></app-cabecera-perfil>
+    <h3 class="apartado">Su armario</h3>
+    <div class="fotos">
+      @for (prenda of prendas(); track prenda.id) {
+        <a [routerLink]="['/app/explorar', prenda.id]">
+          <img [src]="prenda.foto" [alt]="prenda.titulo" />
+        </a>
+      }
+    </div>
+  } @else {
+    <app-estado-vacio icono="person-outline" titulo="Perfil no encontrado"></app-estado-vacio>
+  }
 </ion-content>

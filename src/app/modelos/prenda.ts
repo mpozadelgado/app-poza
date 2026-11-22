@@ -2,10 +2,15 @@ export interface Perfil {
   id: number;
   nombre: string;
   apellido1: string;
+  universidad: string;
   campus: string;
+  ciudad: string;
   foto: string;
   valoracion: number;
+  valoraciones: number;
   intercambios: number;
+  prestamos: number;
+  estilos: string[];
 }
 
 export interface Prenda {

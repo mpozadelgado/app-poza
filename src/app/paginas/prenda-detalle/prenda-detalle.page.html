@@ -4,11 +4,49 @@
       <ion-back-button defaultHref="/app/explorar"></ion-back-button>
     </ion-buttons>
     <ion-title>Detalle</ion-title>
+    @if (prenda(); as p) {
+      <ion-buttons slot="end">
+        <ion-button (click)="p.guardada = !p.guardada" aria-label="Guardar">
+          <ion-icon slot="icon-only" [name]="p.guardada ? 'heart' : 'heart-outline'"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    }
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <p>Estás viendo la prenda con id = {{ id() }}</p>
-  <ion-button expand="block" fill="clear" routerLink="/app/explorar/usuario/1">Ver perfil</ion-button>
-  <ion-button expand="block" [routerLink]="['/solicitar', id()]">Solicitar intercambio o préstamo</ion-button>
+<ion-content>
+  @if (prenda(); as p) {
+    <img class="foto" [src]="p.foto" [alt]="p.titulo" />
+    <div class="contenido">
+      <div class="titulo">
+        <h1>{{ p.titulo }}</h1>
+        @if (p.disponibilidad) {
+          <span class="etiqueta disponible">Disponible</span>
+        } @else {
+          <span class="etiqueta no-disponible">No disponible</span>
+        }
+      </div>
+      <p class="datos">Talla {{ p.talla }} · {{ p.estado }}</p>
+
+      <div class="duena">
+        <img [src]="p.perfil.foto" [alt]="p.perfil.nombre" />
+        <div class="info">
+          <strong>{{ p.perfil.nombre }} {{ p.perfil.apellido1.charAt(0) }}. · {{ p.perfil.campus }}</strong>
+          <span>★ {{ p.perfil.valoracion.toFixed(1).replace('.', ',') }} · {{ p.perfil.intercambios }} intercambios</span>
+        </div>
+        <a [routerLink]="['/app/explorar/usuario', p.perfil.id]">Ver perfil</a>
+      </div>
+
+      <p class="descripcion">{{ p.descripcion }}</p>
+      @if (p.prendaIntercambio) {
+        <p class="descripcion"><strong>Busca a cambio:</strong> {{ p.prendaIntercambio }}</p>
+      }
+
+      <ion-button expand="block" [routerLink]="['/solicitar', p.id]" [disabled]="!p.disponibilidad">Solicitar intercambio o préstamo</ion-button>
+    </div>
+  } @else {
+    <app-estado-vacio titulo="Prenda no encontrada" texto="Puede que ya no esté disponible.">
+      <ion-button fill="outline" routerLink="/app/explorar">Volver a explorar</ion-button>
+    </app-estado-vacio>
+  }
 </ion-content>

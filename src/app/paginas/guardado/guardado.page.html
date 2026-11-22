@@ -1,13 +1,17 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>guardado</ion-title>
+    <ion-title>Guardado</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">guardado</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="rejilla">
+    @for (prenda of guardadas; track prenda.id) {
+      <app-tarjeta-prenda [prenda]="prenda"></app-tarjeta-prenda>
+    } @empty {
+      <app-estado-vacio class="todo-el-ancho" icono="heart-outline" titulo="Aún no has guardado nada" texto="Toca el corazón de una prenda para guardarla aquí.">
+        <ion-button fill="outline" routerLink="/app/explorar">Explorar prendas</ion-button>
+      </app-estado-vacio>
+    }
+  </div>
 </ion-content>

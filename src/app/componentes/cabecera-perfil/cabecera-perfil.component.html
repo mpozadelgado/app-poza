@@ -1,0 +1,22 @@
+<div class="cabecera">
+  <div class="fila">
+    <img [src]="perfil().foto" [alt]="perfil().nombre" />
+    <div>
+      <h2>{{ perfil().nombre }} {{ perfil().apellido1 }}</h2>
+      <p class="gris">{{ perfil().universidad }} · {{ perfil().ciudad }}</p>
+      <app-estrellas [valor]="perfil().valoracion"></app-estrellas>
+      <p class="gris">{{ perfil().valoracion.toFixed(1).replace('.', ',') }} · {{ perfil().valoraciones }} valoraciones</p>
+    </div>
+  </div>
+  <div class="estilos">
+    @for (estilo of perfil().estilos; track estilo; let primero = $first) {
+      <span class="chip" [class.activo]="primero">{{ estilo }}</span>
+    }
+  </div>
+</div>
+
+<div class="numeros">
+  <div><strong>{{ prendas() }}</strong><span>Prendas</span></div>
+  <div><strong>{{ perfil().intercambios }}</strong><span>Intercambios</span></div>
+  <div><strong>{{ perfil().prestamos }}</strong><span>Préstamos</span></div>
+</div>

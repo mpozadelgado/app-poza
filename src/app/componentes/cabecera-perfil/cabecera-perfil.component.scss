@@ -1,0 +1,80 @@
+:host {
+  display: block;
+}
+
+.cabecera {
+  background: var(--app-superficie);
+  padding: 8px 20px 20px;
+}
+
+.fila {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+
+  img {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+}
+
+h2 {
+  margin: 0 0 4px;
+  font-size: 20px;
+}
+
+.gris {
+  margin: 0;
+  font-size: 12px;
+  color: var(--ion-color-medium);
+}
+
+app-estrellas {
+  margin: 6px 0 4px;
+}
+
+.estilos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.chip {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--app-borde);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.chip.activo {
+  background: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+  border-color: transparent;
+}
+
+.numeros {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 16px 20px;
+  padding: 14px 0;
+  border-radius: var(--app-radio);
+  background: var(--ion-color-secondary);
+  text-align: center;
+
+  strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ion-color-primary);
+  }
+
+  span {
+    font-size: 11px;
+    color: var(--ion-color-medium);
+  }
+}
