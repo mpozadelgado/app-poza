@@ -1,0 +1,134 @@
+ion-toolbar {
+  --background: var(--app-superficie);
+}
+
+.persona {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  strong {
+    display: block;
+    font-size: 16px;
+  }
+}
+
+.activa {
+  font-size: 12px;
+  color: var(--ion-color-success);
+}
+
+.escribir {
+  padding-bottom: 8px;
+
+  ion-input {
+    --background: var(--ion-background-color);
+    --padding-start: 14px;
+    border-radius: 20px;
+    min-height: 40px;
+  }
+
+  ion-button {
+    --color: var(--ion-color-primary);
+  }
+}
+
+.dia {
+  margin: 20px 0 12px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--ion-color-medium);
+}
+
+.mensaje {
+  width: fit-content;
+  max-width: 75%;
+  margin: 0 16px 12px;
+  padding: 12px 14px 8px;
+  border-radius: 14px;
+  background: var(--app-superficie);
+  box-shadow: var(--app-sombra);
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  span {
+    display: block;
+    margin-top: 4px;
+    text-align: right;
+    font-size: 10px;
+    color: var(--ion-color-medium);
+  }
+}
+
+.mensaje.mio {
+  margin-left: auto;
+  background: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+
+  span {
+    color: var(--ion-color-primary-contrast);
+    opacity: 0.8;
+  }
+}
+
+.aviso {
+  margin: 8px 16px;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 12px;
+  background: rgba(var(--ion-color-success-rgb), 0.14);
+}
+
+.valorar {
+  margin: 12px 16px;
+}
+
+ion-footer {
+  background: var(--ion-background-color);
+}
+
+.solicitud {
+  margin: 8px 12px 12px;
+  padding: 12px;
+  border-radius: var(--app-radio);
+  border: 1px solid var(--app-borde);
+  background: var(--app-superficie);
+
+  strong {
+    font-size: 15px;
+  }
+
+  p {
+    margin: 6px 0 12px;
+    font-size: 13px;
+    color: var(--ion-color-medium);
+  }
+}
+
+.botones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+
+  ion-button {
+    margin: 0;
+  }
+}
+
+.rechazar {
+  --background: var(--ion-background-color);
+  --color: var(--ion-text-color);
+  --box-shadow: none;
+}

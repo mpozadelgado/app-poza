@@ -1,16 +1,35 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Mensajes</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-list>
-    <ion-item routerLink="/app/chat/1" [button]="true">
-      <ion-label>Marta R.</ion-label>
-    </ion-item>
-    <ion-item routerLink="/app/chat/2" [button]="true">
-      <ion-label>Clara Vidal</ion-label>
-    </ion-item>
-  </ion-list>
+  <div class="cabecera">
+    <h1>Mensajes</h1>
+    <ion-button class="nuevo" fill="clear" aria-label="Nuevo mensaje">
+      <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <ion-searchbar placeholder="Buscar conversaciones" [(ngModel)]="busqueda"></ion-searchbar>
+
+  @for (c of conversaciones; track c.id) {
+    <a class="conversacion" [routerLink]="['/app/chat', c.id]" (click)="c.noLeidos = 0">
+      <div class="avatar">
+        <img [src]="c.perfil.foto" [alt]="c.perfil.nombre" />
+        @if (c.enLinea) {
+          <span class="en-linea"></span>
+        }
+      </div>
+      <div class="texto">
+        <div class="fila">
+          <strong>{{ c.perfil.nombre }} {{ c.perfil.apellido1 }}</strong>
+          <span class="hora" [class.nueva]="c.noLeidos > 0">{{ c.hora }}</span>
+        </div>
+        <div class="fila">
+          <p [class.nuevo]="c.noLeidos > 0">{{ c.mensajes.at(-1)?.texto }}</p>
+          @if (c.noLeidos > 0) {
+            <span class="contador">{{ c.noLeidos }}</span>
+          }
+        </div>
+      </div>
+    </a>
+  } @empty {
+    <app-estado-vacio icono="chatbubble-outline" titulo="Sin conversaciones" texto="No hay ninguna conversación con ese nombre."></app-estado-vacio>
+  }
 </ion-content>

@@ -15,6 +15,9 @@ import {
   searchOutline,
   shirtOutline,
   heart,
+  createOutline,
+  ellipsisHorizontal,
+  send,
 } from 'ionicons/icons';
 
 @Component({
@@ -38,6 +41,9 @@ export class AppComponent {
       searchOutline,
       shirtOutline,
       heart,
+      createOutline,
+      ellipsisHorizontal,
+      send,
     });
   }
 }

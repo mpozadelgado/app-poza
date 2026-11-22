@@ -3,11 +3,67 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/chat"></ion-back-button>
     </ion-buttons>
-    <ion-title>Conversación</ion-title>
+    @if (conversacion(); as c) {
+      <div class="persona">
+        <img [src]="c.perfil.foto" [alt]="c.perfil.nombre" />
+        <div>
+          <strong>{{ c.perfil.nombre }} {{ c.perfil.apellido1.charAt(0) }}.</strong>
+          @if (c.enLinea) {
+            <span class="activa">● Activa ahora</span>
+          }
+        </div>
+      </div>
+    }
+    <ion-buttons slot="end">
+      <ion-button aria-label="Más opciones">
+        <ion-icon slot="icon-only" name="ellipsis-horizontal"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar class="escribir">
+    <ion-buttons slot="start">
+      <ion-button aria-label="Adjuntar">
+        <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-input placeholder="Escribe un mensaje..." [(ngModel)]="texto" (keyup.enter)="enviar()"></ion-input>
+    <ion-buttons slot="end">
+      <ion-button (click)="enviar()" aria-label="Enviar">
+        <ion-icon slot="icon-only" name="send"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <p>Estás viendo la conversación con id = {{ id() }}</p>
-  <ion-button expand="block" [routerLink]="['/valorar', id()]">Valorar experiencia</ion-button>
+<ion-content>
+  @if (conversacion(); as c) {
+    <p class="dia">HOY</p>
+    @for (m of c.mensajes; track $index) {
+      <div class="mensaje" [class.mio]="m.mio">
+        <p>{{ m.texto }}</p>
+        <span>{{ m.hora }}</span>
+      </div>
+    }
+    <div class="aviso">Recuerda marcar la devolución cuando recibas la prenda.</div>
+    @if (c.solicitud === 'aceptada') {
+      <ion-button class="valorar" fill="outline" expand="block" [routerLink]="['/valorar', c.id]">Valorar experiencia</ion-button>
+    }
+  } @else {
+    <app-estado-vacio icono="chatbubble-outline" titulo="Conversación no encontrada"></app-estado-vacio>
+  }
 </ion-content>
+
+@if (conversacion(); as c) {
+  @if (c.solicitud === 'pendiente') {
+    <ion-footer>
+      <div class="solicitud">
+        <strong>Solicitud</strong>
+        <p>{{ c.perfil.nombre }} te ha enviado una solicitud</p>
+        <div class="botones">
+          <ion-button class="rechazar" (click)="responder('rechazada')">Rechazar</ion-button>
+          <ion-button (click)="responder('aceptada')">Aceptar</ion-button>
+        </div>
+      </div>
+    </ion-footer>
+  }
+}
