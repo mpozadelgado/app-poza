@@ -7,11 +7,14 @@ import {
   IonContent,
   IonList,
   IonItem,
+  IonThumbnail,
   IonLabel,
   IonButtons,
   IonButton,
   IonIcon,
 } from '@ionic/angular';
+
+import { PRENDAS } from '../../datos/prendas';
 
 @Component({
   selector: 'app-explorar',
@@ -24,6 +27,7 @@ import {
     IonContent,
     IonList,
     IonItem,
+    IonThumbnail,
     IonLabel,
     IonButtons,
     IonButton,
@@ -31,4 +35,6 @@ import {
     RouterLink,
   ],
 })
-export class ExplorarPage {}
+export class ExplorarPage {
+  prendas = PRENDAS;
+}
