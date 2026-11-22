@@ -7,7 +7,77 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <p>Vas a solicitar la prenda con id = {{ id() }}</p>
-  <ion-button expand="block" routerLink="/solicitud-enviada">Enviar solicitud</ion-button>
+<ion-content>
+  @if (prenda(); as p) {
+    <div class="formulario">
+      <div class="resumen">
+        <img [src]="p.foto" [alt]="p.titulo" />
+        <div>
+          <span class="etiqueta">SOLICITAS</span>
+          <strong>{{ p.titulo }}</strong>
+          <span class="gris">de {{ p.perfil.nombre }} {{ p.perfil.apellido1.charAt(0) }}. · ★ {{ p.perfil.valoracion.toFixed(1).replace('.', ',') }}</span>
+        </div>
+      </div>
+
+      <p class="pregunta">¿Qué quieres hacer?</p>
+      <div class="opciones">
+        <ion-chip [class.activo]="tipo === 'intercambio'" (click)="tipo = 'intercambio'">Intercambiar</ion-chip>
+        <ion-chip [class.activo]="tipo === 'prestamo'" (click)="tipo = 'prestamo'">Pedir prestada</ion-chip>
+      </div>
+
+      <p class="campo">Fecha de recogida</p>
+      <ion-input mode="md" fill="outline" label="Fecha" labelPlacement="stacked" type="date" [(ngModel)]="recogida"></ion-input>
+
+      <p class="campo">Fecha de devolución</p>
+      <ion-input mode="md" fill="outline" label="Fecha" labelPlacement="stacked" type="date" [min]="recogida" [(ngModel)]="devolucion"></ion-input>
+
+      @if (tipo === 'intercambio') {
+        <p class="pregunta">Selecciona la prenda que vas a dar</p>
+        <button class="elegir" type="button" (click)="modalAbierto = true">
+          @if (miPrenda) {
+            <img [src]="miPrenda.foto" [alt]="miPrenda.titulo" />
+            <span>{{ miPrenda.titulo }}</span>
+          } @else {
+            <ion-icon name="add-outline"></ion-icon>
+            <span>Seleccionar de mi armario</span>
+          }
+        </button>
+      }
+
+      <p class="campo">Mensaje para {{ p.perfil.nombre }}</p>
+      <ion-textarea class="mensaje" placeholder="¡Hola! Me encantaría usarlo para una cena..." [autoGrow]="true" [(ngModel)]="mensaje"></ion-textarea>
+
+      <ion-button expand="block" [disabled]="!completa" routerLink="/solicitud-enviada" [queryParams]="{ prenda: p.id, tipo: tipo, desde: recogida, hasta: devolucion }">Enviar solicitud</ion-button>
+    </div>
+  } @else {
+    <app-estado-vacio titulo="Prenda no encontrada"></app-estado-vacio>
+  }
+
+  <ion-modal [isOpen]="modalAbierto" [initialBreakpoint]="0.6" [breakpoints]="[0, 0.6, 0.9]" (didDismiss)="modalAbierto = false">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Mi armario</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="modalAbierto = false">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          @for (prenda of misPrendas; track prenda.id) {
+            <ion-item [button]="true" (click)="elegir(prenda)">
+              <ion-thumbnail slot="start">
+                <img [src]="prenda.foto" [alt]="prenda.titulo" />
+              </ion-thumbnail>
+              <ion-label>
+                <h2>{{ prenda.titulo }}</h2>
+                <p>Talla {{ prenda.talla }} · {{ prenda.estado }}</p>
+              </ion-label>
+            </ion-item>
+          }
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

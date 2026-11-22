@@ -219,7 +219,7 @@ export const PRENDAS: Prenda[] = [
     fechaPublicacion: '2026-11-02',
     foto: 'assets/fotos/jersey-crema.jpg',
     guardada: false,
-    perfil: PERFILES[2],
+    perfil: PERFILES[1],
   },
   {
     id: 10,
@@ -232,6 +232,6 @@ export const PRENDAS: Prenda[] = [
     fechaPublicacion: '2026-10-30',
     foto: 'assets/fotos/pantalon-negro.jpg',
     guardada: false,
-    perfil: PERFILES[6],
+    perfil: PERFILES[1],
   },
 ];

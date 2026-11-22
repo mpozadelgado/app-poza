@@ -1,10 +1,46 @@
-<ion-content class="ion-padding">
-  <ion-button fill="clear" routerLink="/app/explorar" routerDirection="root" aria-label="Cerrar">
-    <ion-icon slot="icon-only" name="close-outline"></ion-icon>
-  </ion-button>
-  <div class="centrado">
+<ion-content>
+  <div class="pantalla">
+    <ion-button class="cerrar" fill="clear" routerLink="/app/explorar" routerDirection="root" aria-label="Cerrar">
+      <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+    </ion-button>
+
+    <div class="check">
+      <div>
+        <ion-icon name="checkmark"></ion-icon>
+      </div>
+    </div>
     <h1>¡Solicitud enviada!</h1>
-    <p>Te avisaremos cuando acepte tu solicitud.</p>
-    <ion-button expand="block" routerLink="/app/explorar" routerDirection="root">Volver a explorar</ion-button>
+
+    @if (datos(); as p) {
+      <p class="texto">{{ p.perfil.nombre }} tiene 24 horas para responder. Te avisaremos cuando acepte tu solicitud.</p>
+
+      <div class="resumen">
+        <p class="titulo-resumen">RESUMEN DE LA SOLICITUD</p>
+        <div class="prenda">
+          <img [src]="p.foto" [alt]="p.titulo" />
+          <div>
+            <span class="tipo">{{ tipo() === 'prestamo' ? 'PRÉSTAMO' : 'INTERCAMBIO' }}</span>
+            <strong>{{ p.titulo }}</strong>
+            <span class="gris">de {{ p.perfil.nombre }} {{ p.perfil.apellido1 }}</span>
+          </div>
+        </div>
+        <div class="fila">
+          <span class="gris">Fechas</span>
+          <span>{{ fechas() }}</span>
+        </div>
+        <div class="fila">
+          <span class="gris">Entrega</span>
+          <span>En persona</span>
+        </div>
+      </div>
+    }
+
+    <div class="normas">
+      <ion-icon name="shield-checkmark-outline"></ion-icon>
+      <span>Tu solicitud está protegida por las normas de la comunidad SwapCloset.</span>
+    </div>
+
+    <ion-button expand="block" routerLink="/app/chat" routerDirection="root">Ir a mensajes</ion-button>
+    <ion-button expand="block" fill="clear" routerLink="/app/explorar" routerDirection="root">Volver a explorar</ion-button>
   </div>
 </ion-content>

@@ -18,6 +18,8 @@ import {
   createOutline,
   ellipsisHorizontal,
   send,
+  checkmark,
+  shieldCheckmarkOutline,
 } from 'ionicons/icons';
 
 @Component({
@@ -44,6 +46,8 @@ export class AppComponent {
       createOutline,
       ellipsisHorizontal,
       send,
+      checkmark,
+      shieldCheckmarkOutline,
     });
   }
 }
