@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { IonApp, IonRouterOutlet } from '@ionic/angular';
+import { Location } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { App } from '@capacitor/app';
+import { IonApp, IonRouterOutlet, Platform } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import {
   colorWand,
@@ -50,6 +52,14 @@ export class AppComponent {
       checkmark,
       shieldCheckmarkOutline,
       starOutline,
+    });
+    const location = inject(Location);
+    inject(Platform).backButton.subscribeWithPriority(-1, (): void => {
+      if (location.path() === '/app/explorar' || location.path() === '/bienvenida') {
+        void App.exitApp();
+      } else {
+        location.back();
+      }
     });
   }
 }
