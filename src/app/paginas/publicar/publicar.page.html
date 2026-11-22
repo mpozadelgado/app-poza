@@ -1,13 +1,62 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>publicar</ion-title>
+    <ion-title>Nueva prenda</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="aviso = 'Guardado como borrador'">Borrador</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">publicar</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="formulario">
+    <label class="fotos">
+      @if (foto) {
+        <img [src]="foto" alt="Foto de la prenda" />
+      } @else {
+        <ion-icon name="add-outline"></ion-icon>
+        <span>Añadir fotos</span>
+      }
+      <input type="file" accept="image/*" (change)="elegirFoto($event)" />
+    </label>
+
+    <p class="campo">Título</p>
+    <ion-input class="caja" aria-label="Título" placeholder="Jersey de punto crema" [(ngModel)]="titulo"></ion-input>
+
+    <div class="dos">
+      <div>
+        <p class="campo">Categoría</p>
+        <ion-select class="caja" aria-label="Categoría" interface="action-sheet" [(ngModel)]="categoria">
+          @for (c of categorias; track c) {
+            <ion-select-option [value]="c">{{ c }}</ion-select-option>
+          }
+        </ion-select>
+      </div>
+      <div>
+        <p class="campo">Talla</p>
+        <ion-select class="caja" aria-label="Talla" interface="action-sheet" [(ngModel)]="talla">
+          @for (t of tallas; track t) {
+            <ion-select-option [value]="t">{{ t }}</ion-select-option>
+          }
+        </ion-select>
+      </div>
+    </div>
+
+    <p class="campo">Estado</p>
+    <ion-select class="caja" aria-label="Estado" interface="action-sheet" [(ngModel)]="estado">
+      @for (e of estados; track e) {
+        <ion-select-option [value]="e">{{ e }}</ion-select-option>
+      }
+    </ion-select>
+
+    <p class="campo">Modalidad</p>
+    <div class="opciones">
+      @for (m of modalidades; track m) {
+        <ion-chip [class.activo]="modalidad === m" (click)="modalidad = m">{{ m }}</ion-chip>
+      }
+    </div>
+
+    <ion-button expand="block" [disabled]="!completa" routerLink="/app/explorar" (click)="publicar()">Publicar prenda</ion-button>
+  </div>
+
+  <ion-toast [isOpen]="aviso !== ''" [message]="aviso" [duration]="2000" (didDismiss)="aviso = ''"></ion-toast>
 </ion-content>

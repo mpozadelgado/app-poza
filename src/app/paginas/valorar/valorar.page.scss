@@ -1,0 +1,100 @@
+.pantalla {
+  padding: 16px 20px 32px;
+  text-align: center;
+}
+
+.avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+h1 {
+  margin: 14px 0 6px;
+  font-size: 24px;
+}
+
+.gris {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ion-color-medium);
+}
+
+.estrellas {
+  margin-top: 20px;
+
+  button {
+    padding: 0 2px;
+    border: none;
+    background: none;
+    font-size: 28px;
+    color: var(--ion-color-tertiary);
+    cursor: pointer;
+  }
+}
+
+.nota {
+  margin: 10px 0 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ion-color-primary);
+}
+
+.pregunta {
+  margin: 0 0 10px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.opciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+ion-chip {
+  --background: var(--app-superficie);
+  --color: var(--ion-text-color);
+  border: 1px solid var(--app-borde);
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+ion-chip.activo {
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-primary-contrast);
+  border-color: transparent;
+}
+
+.comentario {
+  margin-top: 20px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--app-borde);
+  background: var(--app-superficie);
+  text-align: left;
+
+  strong {
+    font-size: 12px;
+  }
+
+  ion-textarea {
+    --padding-start: 0;
+    --padding-top: 6px;
+    min-height: 50px;
+    font-size: 14px;
+  }
+}
+
+ion-button[expand="block"] {
+  margin-top: 20px;
+}
+
+.pie {
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--ion-color-medium);
+}

@@ -7,7 +7,36 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <p>Vas a valorar la solicitud con id = {{ id() }}</p>
-  <ion-button expand="block" routerLink="/app/chat" routerDirection="back">Publicar valoración</ion-button>
+<ion-content>
+  @if (conversacion(); as c) {
+    <div class="pantalla">
+      <img class="avatar" [src]="c.perfil.foto" [alt]="c.perfil.nombre" />
+      <h1>¿Qué tal fue con {{ c.perfil.nombre }}?</h1>
+      <p class="gris">Tu valoración ayuda a crear una comunidad de confianza.</p>
+
+      <div class="estrellas">
+        @for (i of [1, 2, 3, 4, 5]; track i) {
+          <button type="button" (click)="puntos = i" [attr.aria-label]="i + ' estrellas'">{{ i <= puntos ? '★' : '☆' }}</button>
+        }
+      </div>
+      <p class="nota">{{ textos[puntos - 1] }}</p>
+
+      <p class="pregunta">¿Qué destacarías?</p>
+      <div class="opciones">
+        @for (e of etiquetas; track e) {
+          <ion-chip [class.activo]="elegidas.includes(e)" (click)="marcar(e)">{{ e }}</ion-chip>
+        }
+      </div>
+
+      <div class="comentario">
+        <strong>Comentario</strong>
+        <ion-textarea aria-label="Comentario" placeholder="Todo genial, muy fácil quedar con ella y la prenda estaba impecable." [autoGrow]="true" [(ngModel)]="comentario"></ion-textarea>
+      </div>
+
+      <ion-button expand="block" routerLink="/app/chat" routerDirection="back" (click)="publicar()">Publicar valoración</ion-button>
+      <p class="pie">Tu valoración aparecerá en el perfil de {{ c.perfil.nombre }}.</p>
+    </div>
+  } @else {
+    <app-estado-vacio icono="star-outline" titulo="No hay nada que valorar"></app-estado-vacio>
+  }
 </ion-content>
