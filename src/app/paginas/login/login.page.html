@@ -7,10 +7,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <h1>Qué alegría verte de nuevo</h1>
-  <ion-input label="Email" labelPlacement="floating" type="email"></ion-input>
-  <ion-input label="Contraseña" labelPlacement="floating" type="password"></ion-input>
-  <ion-button expand="block" routerLink="/app/explorar" routerDirection="root">Iniciar sesión</ion-button>
-  <p>¿Aún no tienes cuenta? <a routerLink="/registro">Regístrate</a></p>
+<ion-content>
+  <div class="pantalla">
+    <div>
+      <app-logo></app-logo>
+      <h1>Qué alegría verte de nuevo</h1>
+      <p class="subtitulo">Accede para seguir dando una nueva vida a tu armario.</p>
+      <ion-input mode="md" fill="outline" labelPlacement="stacked" label="Email" type="email" placeholder="tu@email.com"></ion-input>
+      <ion-input mode="md" fill="outline" labelPlacement="stacked" label="Contraseña" type="password" placeholder="Introduce tu contraseña" [clearInput]="true"></ion-input>
+      <a class="olvido">¿Has olvidado tu contraseña?</a>
+    </div>
+    <div>
+      <ion-button expand="block" routerLink="/app/explorar" routerDirection="root">Iniciar sesión</ion-button>
+      <p class="pie">¿Aún no tienes cuenta? <a routerLink="/registro">Regístrate</a></p>
+    </div>
+  </div>
 </ion-content>

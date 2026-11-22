@@ -15,3 +15,4 @@ describe('BienvenidaPage', () => {
     expect(component).toBeTruthy();
   });
 });
+

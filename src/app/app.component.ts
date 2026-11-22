@@ -3,6 +3,7 @@ import { IonApp, IonRouterOutlet } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import {
   colorWand,
+  colorWandOutline,
   homeOutline,
   heartOutline,
   addOutline,
@@ -22,6 +23,7 @@ export class AppComponent {
   constructor() {
     addIcons({
       colorWand,
+      colorWandOutline,
       homeOutline,
       heartOutline,
       addOutline,

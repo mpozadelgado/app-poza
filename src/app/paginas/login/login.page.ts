@@ -12,6 +12,8 @@ import {
   IonRouterLink,
 } from '@ionic/angular';
 
+import { LogoComponent } from '../../componentes/logo/logo.component';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -27,6 +29,7 @@ import {
     IonButton,
     RouterLink,
     IonRouterLink,
+    LogoComponent,
   ],
 })
 export class LoginPage {}
