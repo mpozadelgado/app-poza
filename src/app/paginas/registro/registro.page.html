@@ -7,12 +7,22 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <h1>Empieza a compartir estilo</h1>
-  <ion-input label="Nombre" labelPlacement="floating"></ion-input>
-  <ion-input label="Email" labelPlacement="floating" type="email"></ion-input>
-  <ion-input label="Contraseña" labelPlacement="floating" type="password"></ion-input>
-  <ion-input label="Confirmar contraseña" labelPlacement="floating" type="password"></ion-input>
-  <ion-button expand="block" routerLink="/app/explorar" routerDirection="root">Crear cuenta</ion-button>
-  <p>¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></p>
+<ion-content>
+  <div class="pantalla">
+    <div>
+      <h1>Empieza a compartir estilo</h1>
+      <p class="subtitulo">Crea tu cuenta y encuentra la próxima historia para tus prendas.</p>
+      <ion-input mode="md" fill="outline" labelPlacement="stacked" label="Nombre" placeholder="¿Cómo te llamas?"></ion-input>
+      <ion-input mode="md" fill="outline" labelPlacement="stacked" label="Email" type="email" placeholder="tu@email.com"></ion-input>
+      <ion-input mode="md" fill="outline" labelPlacement="stacked" label="Contraseña" type="password" placeholder="Mínimo 8 caracteres" [clearInput]="true"></ion-input>
+      <ion-input mode="md" fill="outline" labelPlacement="stacked" label="Confirmar contraseña" type="password" placeholder="Repite tu contraseña" [clearInput]="true"></ion-input>
+      <ion-checkbox mode="md" labelPlacement="end" justify="start" [checked]="true">
+        Acepto los <span class="enlace">términos y condiciones</span> y la política de privacidad.
+      </ion-checkbox>
+    </div>
+    <div>
+      <ion-button expand="block" routerLink="/app/explorar" routerDirection="root">Crear cuenta</ion-button>
+      <p class="pie">¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></p>
+    </div>
+  </div>
 </ion-content>

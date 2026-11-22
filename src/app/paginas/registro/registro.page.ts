@@ -8,6 +8,7 @@ import {
   IonBackButton,
   IonContent,
   IonInput,
+  IonCheckbox,
   IonButton,
   IonRouterLink,
 } from '@ionic/angular';
@@ -24,6 +25,7 @@ import {
     IonBackButton,
     IonContent,
     IonInput,
+    IonCheckbox,
     IonButton,
     RouterLink,
     IonRouterLink,

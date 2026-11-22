@@ -1,0 +1,50 @@
+.pantalla {
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 16px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+
+.subtitulo {
+  color: var(--ion-color-medium);
+  line-height: 1.5;
+  margin: 0 0 48px;
+}
+
+ion-checkbox {
+  --size: 20px;
+  --border-radius: 4px;
+  --checkbox-background-checked: transparent;
+  --border-color-checked: var(--ion-color-primary);
+  --checkmark-color: var(--ion-color-primary);
+  font-size: 13px;
+  color: var(--ion-color-medium);
+}
+
+ion-checkbox::part(label) {
+  white-space: normal;
+}
+
+.enlace {
+  color: var(--ion-color-primary);
+}
+
+.pie {
+  text-align: center;
+  font-size: 14px;
+  color: var(--ion-color-medium);
+
+  a {
+    color: var(--ion-color-primary);
+    font-weight: 700;
+    text-decoration: none;
+  }
+}
