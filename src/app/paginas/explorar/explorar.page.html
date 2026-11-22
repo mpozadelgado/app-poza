@@ -1,18 +1,41 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Explorar</ion-title>
-    <ion-buttons slot="end">
-      <ion-button routerLink="/notificaciones" aria-label="Notificaciones">
-        <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <div class="rejilla">
-    @for (prenda of prendas; track prenda.id) {
-      <app-tarjeta-prenda [prenda]="prenda"></app-tarjeta-prenda>
+  <div class="cabecera">
+    <div>
+      <p class="marca">SWAPCLOSET</p>
+      <h1>Hola, Lucía ✦</h1>
+    </div>
+    <ion-button class="campana" fill="clear" routerLink="/notificaciones" aria-label="Notificaciones">
+      <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <ion-searchbar placeholder="Busca una prenda, estilo o campus" [(ngModel)]="busqueda"></ion-searchbar>
+
+  <div class="filtros">
+    @for (f of filtros; track f.valor) {
+      <ion-chip [class.activo]="talla === f.valor" (click)="talla = f.valor">{{ f.texto }}</ion-chip>
     }
   </div>
+
+  <div class="rejilla">
+    @for (prenda of prendasVisibles; track prenda.id) {
+      <app-tarjeta-prenda [prenda]="prenda"></app-tarjeta-prenda>
+    } @empty {
+      <app-estado-vacio class="todo-el-ancho" icono="search-outline" titulo="Sin resultados" texto="Prueba con otra búsqueda o quita los filtros.">
+        <ion-button fill="outline" (click)="limpiar()">Quitar filtros</ion-button>
+      </app-estado-vacio>
+    }
+  </div>
+
+  @if (masPrendas.length > 0) {
+    <div class="seccion">
+      <h2>Más productos</h2>
+      <ion-button fill="clear" size="small" (click)="limpiar()">Ver todo</ion-button>
+    </div>
+    <div class="rejilla">
+      @for (prenda of masPrendas; track prenda.id) {
+        <app-tarjeta-prenda [prenda]="prenda"></app-tarjeta-prenda>
+      }
+    </div>
+  }
 </ion-content>

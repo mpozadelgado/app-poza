@@ -12,6 +12,8 @@ import {
   notificationsOutline,
   closeOutline,
   moonOutline,
+  searchOutline,
+  shirtOutline,
 } from 'ionicons/icons';
 
 @Component({
@@ -32,6 +34,8 @@ export class AppComponent {
       notificationsOutline,
       closeOutline,
       moonOutline,
+      searchOutline,
+      shirtOutline,
     });
   }
 }
