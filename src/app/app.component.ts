@@ -20,6 +20,7 @@ import {
   send,
   checkmark,
   shieldCheckmarkOutline,
+  starOutline,
 } from 'ionicons/icons';
 
 @Component({
@@ -48,6 +49,7 @@ export class AppComponent {
       send,
       checkmark,
       shieldCheckmarkOutline,
+      starOutline,
     });
   }
 }

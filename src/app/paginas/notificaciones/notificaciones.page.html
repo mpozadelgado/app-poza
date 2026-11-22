@@ -4,9 +4,35 @@
       <ion-back-button defaultHref="/app/explorar"></ion-back-button>
     </ion-buttons>
     <ion-title>Notificaciones</ion-title>
+    @if (sinLeer > 0) {
+      <ion-buttons slot="end">
+        <ion-button (click)="leerTodas()">Leer todas</ion-button>
+      </ion-buttons>
+    }
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <p>Aquí aparecerán tus avisos.</p>
+<ion-content>
+  @for (a of avisos; track a.id) {
+    <a class="aviso" [class.nuevo]="!a.leida" [routerLink]="a.enlace" (click)="a.leida = true">
+      <div class="icono">
+        <ion-icon [name]="a.icono"></ion-icon>
+      </div>
+      <div class="texto">
+        <p>{{ a.texto }}</p>
+        <span>{{ a.hora }}</span>
+      </div>
+      @if (!a.leida) {
+        <span class="punto"></span>
+      }
+    </a>
+  } @empty {
+    <app-estado-vacio icono="notifications-outline" titulo="Todo al día" texto="No tienes notificaciones nuevas.">
+      <ion-button fill="outline" routerLink="/app/explorar">Explorar prendas</ion-button>
+    </app-estado-vacio>
+  }
+
+  @if (avisos.length > 0) {
+    <ion-button class="borrar" fill="clear" expand="block" color="medium" (click)="avisos = []">Borrar todas</ion-button>
+  }
 </ion-content>

@@ -1,15 +1,73 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Perfil</ion-title>
+    <ion-title>Mi perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="aviso = 'Pronto podrás editar tu perfil'">Editar</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
+  <app-cabecera-perfil [perfil]="yo" [prendas]="misPrendas.length"></app-cabecera-perfil>
+
+  <ion-segment [(ngModel)]="seccion">
+    <ion-segment-button value="armario">
+      <ion-label>Mi armario</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="historial">
+      <ion-label>Historial</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="valoraciones">
+      <ion-label>Valoraciones</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  @switch (seccion) {
+    @case ('armario') {
+      <div class="fotos">
+        @for (p of misPrendas; track p.id) {
+          <a [routerLink]="['/app/explorar', p.id]"><img [src]="p.foto" [alt]="p.titulo" /></a>
+        }
+      </div>
+    }
+    @case ('historial') {
+      <p class="apartado">Tus prendas</p>
+      <div class="fotos">
+        @for (p of misPrendas; track p.id) {
+          <a [routerLink]="['/app/explorar', p.id]"><img [src]="p.foto" [alt]="p.titulo" /></a>
+        }
+      </div>
+      <p class="apartado">Has prestado</p>
+      <div class="fotos">
+        @for (p of prestadas; track p.id) {
+          <a [routerLink]="['/app/explorar', p.id]"><img [src]="p.foto" [alt]="p.titulo" /></a>
+        }
+      </div>
+    }
+    @case ('valoraciones') {
+      @for (v of valoraciones; track v.nombre) {
+        <div class="valoracion">
+          <img [src]="v.foto" [alt]="v.nombre" />
+          <div>
+            <strong>{{ v.nombre }}</strong>
+            <app-estrellas [valor]="v.puntos"></app-estrellas>
+            <p>{{ v.texto }}</p>
+          </div>
+        </div>
+      }
+    }
+  }
+
   <ion-list [inset]="true">
     <ion-item>
       <ion-icon slot="start" name="moon-outline"></ion-icon>
       <ion-toggle (ionChange)="cambiarTema($event)">Modo oscuro</ion-toggle>
     </ion-item>
   </ion-list>
-  <ion-button color="danger" fill="outline" expand="block" routerLink="/bienvenida" routerDirection="root">Cerrar sesión</ion-button>
+
+  <div class="salir">
+    <ion-button color="danger" fill="outline" expand="block" routerLink="/bienvenida" routerDirection="root">Cerrar sesión</ion-button>
+  </div>
+
+  <ion-toast [isOpen]="aviso !== ''" [message]="aviso" [duration]="2000" (didDismiss)="aviso = ''"></ion-toast>
 </ion-content>
