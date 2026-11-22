@@ -6,8 +6,8 @@
 
 <ion-content>
   <div class="rejilla">
-    @for (prenda of guardadas; track prenda.id) {
-      <app-tarjeta-prenda [prenda]="prenda"></app-tarjeta-prenda>
+    @for (prenda of guardadas; track prenda.id; let i = $index) {
+      <app-tarjeta-prenda class="entrada" [style.--orden]="i" [prenda]="prenda"></app-tarjeta-prenda>
     } @empty {
       <app-estado-vacio class="todo-el-ancho" icono="heart-outline" titulo="Aún no has guardado nada" texto="Toca el corazón de una prenda para guardarla aquí.">
         <ion-button fill="outline" routerLink="/app/explorar">Explorar prendas</ion-button>
